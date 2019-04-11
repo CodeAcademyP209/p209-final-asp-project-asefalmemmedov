@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MebelTemplate.Models.HomeDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (TempData!=null)
+{
+    <h1 class="text-uppercase text-center alert-info">
+        @TempData["SM"]
+    </h1>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HeaderTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeaderPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeaderTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeaderPrice)
+        </td>
+        <td>
+            <img class="img-responsive img-rounded" style="width:300px;height:150px;" src="~/Content/img/slider/@item.Id/@item.Image"/>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>

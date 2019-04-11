@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MebelTemplate.Models.ServicesDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicesTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServicesContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicesTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServicesContent)
+        </td>
+        <td>
+            <img style="width:250px;" src="~/Content/img/service/@item.Id/@item.Image" class="img-thumbnail img-responsive"/>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>
